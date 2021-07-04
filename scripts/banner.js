@@ -5,19 +5,15 @@ let arrowActivated = false;
 
 function rotateUp() {
 
-    let degrees = 270;
+    let degrees = 0;
 
     buttonTimer = setInterval(function () {
 
-        if (degrees === 90){
+        if (degrees === 180){
 
             clearInterval(buttonTimer);
         }
         
-        if (degrees === 360){
-
-            degrees = 0;
-        }
 
         button.style.transform = "rotate(" + degrees + "deg)";
         degrees += 10;
@@ -28,13 +24,14 @@ function rotateUp() {
 
 function rotateDown() {
 
-    let degrees = 90;
+    let degrees = 180;
 
     buttonTimer = setInterval(function () {
 
-        if (degrees === 270){
+        if (degrees === 360){
 
             clearInterval(buttonTimer);
+            degrees = 0;
         }
         
         button.style.transform = "rotate(" + degrees + "deg)";

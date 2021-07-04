@@ -12,45 +12,41 @@ body {
     color: #ffffff;
 }
 
-.outer-header {
+.header-container {
 
-    display: flex;
     width: 100%;
-    height: 69px;
-    align-items: center;
+    height: 800px;
+    display: grid;
+    grid-template: repeat(50, 1fr) / repeat(50, 1fr);
 }
 
-.outer-header #banner-button {
+.title {
 
-    margin-left: auto;
-    margin-right: 20px;
-    transform: rotate(270deg);
+    grid-column: 3 / 14;
+    grid-row: 4 / 8;
 }
 
-.outer-header h1 {
+.arrow {
 
-    margin-left: 20px;
-    z-index: 10;
+    grid-column: 46 / 47;
+    grid-row: 4 / 8;
 }
 
+.header-container nav {
 
-#banner-id {
-
+    grid-column: 46 / 47;
+    grid-row: 9 / 18;
+    text-align: center;
     display: none;
-    align-items: center;
-    opacity: 0.1;
-    width: 100%;
-    height: 69px;
-    background-color: #3b3b3b;
 }
 
-.banner nav {
+.header-container ul {
 
-    margin-left: auto;
+    list-style-type: none;
+
 }
 
-.banner li {
+.header-container li {
 
-    display: inline-block;
-    margin: 0 20px;
+    margin: 20px 0;
 }

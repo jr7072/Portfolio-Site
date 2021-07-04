@@ -1,6 +1,6 @@
 let op = null;
-let banner = document.getElementById("banner-id");
-let button = document.getElementById("banner-button");
+let banner = document.getElementById("navigation");
+let button = document.getElementById("nav-arrow");
 let arrowActivated = false;
 
 function rotateUp() {

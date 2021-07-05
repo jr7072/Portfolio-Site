@@ -134,3 +134,58 @@ const animateIntro = () => {
 }
 
 animateIntro();
+
+/* scroll animations */
+
+//fade scroll elements out
+
+let cards = document.querySelectorAll(".scroll-card");
+
+cards.forEach(el => {
+    el.style.opacity = 0;
+})
+
+
+const checkInView = (element, offset) => {
+
+    let elPosTop = element.getBoundingClientRect().top;
+    
+    return elPosTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+}
+
+const displayScroll = element => {
+
+    element.classList.add("scrolled");
+    element.classList.add("slide-right");
+}
+
+const removeScroll = element => {
+
+    element.classList.remove("scrolled")
+    element.classList.add("slide-left")
+}
+
+let offSet = 500;
+
+const handleScroll = () => {
+
+    cards.forEach(el => {
+
+        if (checkInView(el, offSet)) {
+            
+            displayScroll(el);
+        }
+
+        else {
+
+            removeScroll(el);
+        }
+    });
+
+}
+
+window.addEventListener('scroll', () => {
+    handleScroll();
+});
+
+

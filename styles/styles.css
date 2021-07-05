@@ -99,6 +99,7 @@ body {
     flex-wrap: wrap;
     border-radius: 10%;
     margin-left: 30px;
+    transition: opacity 500ms;
 }
 
 .scroll-card h2 {
@@ -112,4 +113,42 @@ body {
     margin: 50px 30px;
     line-height: 1.6;
     font-size: 1.2rem;
+}
+
+.scroll-card.scrolled.slide-right {
+    opacity: 1 !important;
+    animation: slide-in-right 1s ease-in-out both;
+}
+
+
+.slide-left {
+
+    animation: slide-in-left 1s ease-in-out both;
+}
+
+@keyframes slide-in-right {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(100px);
+      opacity: 1;
+    }
+}
+
+@keyframes slide-in-left {
+
+    0% {
+
+        transform: translateX(100px);
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: translateX(0);
+        opacity: 0;
+    }
 }

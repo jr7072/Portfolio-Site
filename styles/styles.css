@@ -102,17 +102,41 @@ body {
     transition: opacity 500ms;
 }
 
-.scroll-card h2 {
+.bio h2, .languages h2{
 
     padding-top: 100px;
     font-size: 2rem;
 }
 
-.scroll-card p {
+.bio p{
 
     margin: 50px 30px;
     line-height: 1.6;
     font-size: 1.2rem;
+}
+
+.languages {
+
+    background-color: #1c1441;
+}
+
+.languages h2 {
+    width: 100%;
+    text-align: center;
+}
+
+
+.languages ul {
+
+    list-style-type: circle;
+    padding-right: 140px;
+    margin-top: 30px;   
+}
+
+.languages li {
+
+    font-size: 1.2rem;
+    margin: 20px 0;
 }
 
 .scroll-card.scrolled.slide-right {

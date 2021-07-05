@@ -1,3 +1,6 @@
+
+/* script for banner elements */
+
 let op = null;
 let banner = document.getElementById("navigation");
 let button = document.getElementById("nav-arrow");
@@ -96,3 +99,38 @@ function bannerAnimation () {
 }
 
 button.onclick = bannerAnimation;
+
+/* script for intro elements */
+
+const animateIntro = () => {
+
+    let numWords = 4;
+    let word = null;
+    words = [];
+
+    for (let i = 1; i <= numWords; ++i) {
+
+        word = document.getElementById("intro-" + i);
+
+        words.push(word);
+    }
+    
+    let i = 0;
+    let timeDelay = 400;
+
+    timer = setInterval(function () {
+        
+        
+        if (i === 3){
+            clearInterval(timer);
+        }
+
+        words[i].style.display = "inline-block";
+
+        i++;
+
+    }, timeDelay)
+
+}
+
+animateIntro();

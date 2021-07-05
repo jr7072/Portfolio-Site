@@ -12,6 +12,11 @@ body {
     color: #ffffff;
 }
 
+.tab {
+
+    margin-left: 40px;
+}
+
 .header-container {
 
     width: 100%;
@@ -72,4 +77,39 @@ body {
 .intro span {
 
     display: none;
+}
+
+.scroll-container {
+
+    width: 100%;
+    height: 600px;
+    background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.scroll-card {
+
+    width: 40%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    border-radius: 10%;
+    margin-left: 30px;
+}
+
+.scroll-card h2 {
+
+    padding-top: 100px;
+    font-size: 2rem;
+}
+
+.scroll-card p {
+
+    margin: 50px 30px;
+    line-height: 1.6;
+    font-size: 1.2rem;
 }

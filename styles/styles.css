@@ -68,3 +68,8 @@ body {
     font-size: 5rem;
     text-shadow: 10px 10px #3b3b3b;
 }
+
+.intro span {
+
+    display: none;
+}

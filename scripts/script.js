@@ -106,7 +106,6 @@ const animateIntro = () => {
 
     let numWords = 4;
     let word = null;
-    let timeDelay = 400;
     words = [];
 
     for (let i = 1; i <= numWords; ++i) {
@@ -117,6 +116,7 @@ const animateIntro = () => {
     }
     
     let i = 0;
+    let timeDelay = 400;
 
     timer = setInterval(function () {
         

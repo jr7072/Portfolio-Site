@@ -189,3 +189,121 @@ window.addEventListener('scroll', () => {
 });
 
 
+/* animation on scroll script */
+
+//FIXME: needs to be able to transition between projects on show case.
+
+/*
+
+const hideProjectTemplate = () => {
+
+    let projectBoxes = document.querySelectorAll(".collect");
+    
+    projectBoxes.forEach(element => {
+
+        element.style.opacity = 0;
+    });
+
+}
+
+hideProjectTemplate();
+
+
+const checkBottom = () => {
+
+    let projectContainer = document.querySelector(".project-1");
+    
+    let position = projectContainer.getBoundingClientRect().bottom;
+
+    return position <= (window.innerHeight);
+}
+
+let stateOpacity = 0;
+let state = 0;
+
+const boundOpacity = opacityValue => {
+
+    if (opacityValue > 1) {
+
+        opacityValue = 1;
+    }
+
+    else if (opacityValue < 0){
+
+        opacityValue = 0;
+    }
+
+    return opacityValue;
+
+}
+
+
+//FIXME: need to create a stable function
+const transitionStates = (numStates, amount, stateOpacity) => {
+
+    amount *= -1;
+
+    let increment = amount * 0.003;
+
+    stateOpacity += increment;
+
+    for (let i = 1; i <= numStates; ++i) {
+
+        let stateElement = document.querySelector(".state-" + i);
+
+        stateElement.style.opacity = stateOpacity;
+
+    } 
+}
+
+const projectScrollAnimation = amount => {
+
+    let stateElement = document.querySelector(".state-" + state);
+    
+    let increment = amount * 0.003;
+
+    stateOpacity += increment;
+
+    stateOpacity = boundOpacity(stateOpacity);
+
+    stateElement.style.opacity = stateOpacity;
+
+    
+    if (window.getComputedStyle(stateElement).opacity === "0" && state !== 0) {
+        stateOpacity = 1;
+        state--;
+    }
+
+    else if (window.getComputedStyle(stateElement).opacity === "1" && state !== 4) {
+        
+        stateOpacity = 0;
+        state ++;
+    }
+
+}
+
+
+let scrollY = 0;
+let scrollFlag = document.querySelector(".state-0");
+let transitionNum = 4;
+let documentBody = document.querySelector("body");
+
+const animateProjects = event => {
+
+    let scroll = event.deltaY;
+
+    if (checkBottom()){
+
+        documentBody.classList.add("stop-scrolling");
+        projectScrollAnimation(scroll);
+        
+        if (window.getComputedStyle(scrollFlag).opacity === '0') {
+
+            documentBody.classList.remove("stop-scrolling");
+            console.log("works");
+        }
+
+    }
+}
+
+window.addEventListener('wheel', animateProjects);*/

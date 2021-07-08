@@ -189,62 +189,60 @@ body.stop-scrolling {
     height: 1000px;
     background-color: #000000;
     text-align: center;
-    display: flex;
+    display: grid;
+    grid-template: repeat(50, 1fr) / repeat(50, 1fr);
 
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
 }
 
 .project-box h2, .project-box p {
 
-    padding-top: 100px;
     width: 100%;
     font-size: 3rem;
 }
 
-.project-box .project-info {
+.project-box .state-0 {
+    grid-row: 5 / 7;
+    grid-column: 23 / 27;
+  
+}
 
-    width: 30%;
-    height: 80%;
-    margin-left: 40px;
+.project-box .state-1{
+
     background-color: rbga(0,0,0,0);
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-
-
+    grid-row: 15 / 41;
+    grid-column: 3 / 24;
 }
 
-.project-info h2{
+
+.state-1 h2{
 
     width: 100%;
     padding-top: 100px;
     font-size: 3rem;
 }
 
-.project-info p {
+.state-1 p {
 
     width: 80%;
     margin: 50px auto;
     font-size: 2rem;
 }
 
-.project-box .project-images {
+.project-box .state-4{
 
-    height: 80%;
-    width: 60%;
-    margin-right: 40px;
-    margin-left: auto;
-
+    grid-column: 26 / 48;
+    grid-row: 15 / 41;
 
 }
 
-.project-images img {
+.state-4 img {
 
     width: 100%;
     height: 100%;
+    
 }
-
 

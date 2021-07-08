@@ -211,7 +211,7 @@ hideProjectTemplate();
 
 const checkBottom = () => {
 
-    let projectContainer = document.querySelector(".project-1");
+    let projectContainer = document.querySelector(".project-box");
     
     let position = projectContainer.getBoundingClientRect().bottom;
 
@@ -238,6 +238,8 @@ const boundOpacity = opacityValue => {
 }
 
 
+let inTransition = false;
+
 //FIXME: need to create a stable function
 const transitionStates = (numStates, amount, stateOpacity) => {
 
@@ -254,6 +256,7 @@ const transitionStates = (numStates, amount, stateOpacity) => {
         stateElement.style.opacity = stateOpacity;
 
     } 
+
 }
 
 const projectScrollAnimation = amount => {
@@ -268,7 +271,6 @@ const projectScrollAnimation = amount => {
 
     stateElement.style.opacity = stateOpacity;
 
-    
     if (window.getComputedStyle(stateElement).opacity === "0" && state !== 0) {
         stateOpacity = 1;
         state--;
@@ -280,7 +282,36 @@ const projectScrollAnimation = amount => {
         state ++;
     }
 
+
 }
+
+const removeTags = page => {
+
+    let pageStates = document.querySelectorAll(".page-" + page);
+
+    let stateNum = 1;
+    pageStates.forEach(el => {
+
+        el.classList.remove("state-" + stateNum);
+        el.style.display = "none";
+        stateNum++;
+    });
+
+}
+
+const addTags = page => {
+
+    let pageStates = document.querySelectorAll(".page-" + page);
+    let stateNum = 1;
+    
+    pageStates.forEach(el => {
+
+        el.classList.add("state-" + stateNum);
+        stateNum++;
+    });
+}
+
+
 
 
 let scrollY = 0;
@@ -295,15 +326,24 @@ const animateProjects = event => {
     if (checkBottom()){
 
         documentBody.classList.add("stop-scrolling");
-        projectScrollAnimation(scroll);
-        
-        if (window.getComputedStyle(scrollFlag).opacity === '0') {
 
-            documentBody.classList.remove("stop-scrolling");
-            console.log("works");
+        if (inTransition) {
+
+            transitionStates(transitionNum, scroll, stateOpacity);
         }
 
+        else {
+
+            projectScrollAnimation(scroll);
+            
+            if (window.getComputedStyle(scrollFlag).opacity === '0') {
+
+                documentBody.classList.remove("stop-scrolling");
+                console.log("works");
+            }
+        }
     }
 }
 
 window.addEventListener('wheel', animateProjects);
+

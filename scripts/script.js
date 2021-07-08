@@ -193,7 +193,7 @@ window.addEventListener('scroll', () => {
 
 //FIXME: needs to be able to transition between projects on show case.
 
-/*
+
 
 const hideProjectTemplate = () => {
 
@@ -306,4 +306,4 @@ const animateProjects = event => {
     }
 }
 
-window.addEventListener('wheel', animateProjects);*/
+window.addEventListener('wheel', animateProjects);

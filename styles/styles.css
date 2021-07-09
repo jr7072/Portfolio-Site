@@ -63,6 +63,22 @@ body.stop-scrolling {
 .header-container li {
 
     margin: 20px 0;
+    font-size: 1rem;
+    color: #ffffff;
+
+}
+
+.header-container a {
+
+    text-decoration: none;
+}
+
+.header-container li:hover {
+
+    text-decoration: initial;
+    color: #0687ff;
+    border-bottom: 2px solid #0687ff;
+   
 }
 
 .intro {

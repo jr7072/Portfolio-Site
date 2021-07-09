@@ -419,4 +419,3 @@ const animateProjects = event => {
 }
 
 window.addEventListener('wheel', animateProjects);
-

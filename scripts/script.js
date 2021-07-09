@@ -201,6 +201,7 @@ const hideProjectTemplate = () => {
     
     projectBoxes.forEach(element => {
 
+        element.style.display = "none";
         element.style.opacity = 0;
     });
 
@@ -241,29 +242,110 @@ const boundOpacity = opacityValue => {
 let inTransition = false;
 
 //FIXME: need to create a stable function
-const transitionStates = (numStates, amount, stateOpacity) => {
 
-    amount *= -1;
+const removeTags = page => {
 
-    let increment = amount * 0.003;
+    let pageStates = document.querySelectorAll(".page-" + page);
 
-    stateOpacity += increment;
+    let stateNum = 1;
+    pageStates.forEach(el => {
 
-    for (let i = 1; i <= numStates; ++i) {
+        el.classList.remove("state-" + stateNum);
+        el.style.opacity = 0;
+        el.style.display = "none";
 
-        let stateElement = document.querySelector(".state-" + i);
+        if (stateNum === 1) {
 
-        stateElement.style.opacity = stateOpacity;
+            el.classList.remove("init-trans");
+    
+        }
+        else if (stateNum === 4) {
 
-    } 
+            el.classList.remove("end-trans");
+        
+        }
+
+        stateNum++;
+    });
 
 }
 
-const projectScrollAnimation = amount => {
+const addTags = page => {
 
-    let stateElement = document.querySelector(".state-" + state);
+    let pageStates = document.querySelectorAll(".page-" + page);
+    let stateNum = 1;
+    
+    pageStates.forEach(el => {
+
+        el.classList.add("state-" + stateNum);
+        el.style.display = "block";
+        if (stateNum === 1) {
+
+            el.classList.add("init-trans");
+        }
+
+        else if (stateNum === 4) {
+
+            el.classList.add("end-trans");
+        }
+
+        stateNum++;
+    });
+}
+
+let initPage = 1;
+
+const transitionStates = (numStates, amount) => {
+
+    amount *= -1;
     
     let increment = amount * 0.003;
+   
+    stateOpacity += increment;
+
+    stateOpacity = boundOpacity(stateOpacity);
+    
+    let collectedStates = [];
+    let transState = 1;
+
+    for (let i = 0; i < numStates; ++i) {
+
+        collectedStates[i] = document.querySelector(".state-" + transState);
+        transState++;
+
+    }
+
+    collectedStates.forEach(el => {
+        el.style.opacity = stateOpacity;
+    })
+
+    transState = 1;
+
+    if (window.getComputedStyle(collectedStates[numStates - 1]).opacity === "0" && amount < 0 && initPage < 3) {
+
+        removeTags(initPage);
+        addTags(++initPage);
+        state = 1;
+        inTransition = false;
+    }
+
+    if (window.getComputedStyle(collectedStates[0]).opacity === "1" && amount > 0) {
+        state = 4;
+        inTransition = false;
+    }
+
+}
+
+
+
+const projectScrollAnimation = amount => {
+
+
+    let stateElement = document.querySelector(".state-" + state);
+    let increment = amount * 0.003;
+
+
+    stateElement.style.display = "block";
 
     stateOpacity += increment;
 
@@ -282,40 +364,29 @@ const projectScrollAnimation = amount => {
         state ++;
     }
 
+    let endTrans = document.querySelector(".end-trans");
+
+    if (initPage >= 2) {
+
+        let initTrans = document.querySelector(".init-trans");
+        
+        if (window.getComputedStyle(initTrans).opacity === "0" && amount < 0) {
+            removeTags(initPage);
+            addTags(--initPage);
+            inTransition = true;
+        }
+    }
+
+    if (window.getComputedStyle(endTrans).opacity === "1" && amount > 0) {
+
+        inTransition = true;
+    }
 
 }
-
-const removeTags = page => {
-
-    let pageStates = document.querySelectorAll(".page-" + page);
-
-    let stateNum = 1;
-    pageStates.forEach(el => {
-
-        el.classList.remove("state-" + stateNum);
-        el.style.display = "none";
-        stateNum++;
-    });
-
-}
-
-const addTags = page => {
-
-    let pageStates = document.querySelectorAll(".page-" + page);
-    let stateNum = 1;
-    
-    pageStates.forEach(el => {
-
-        el.classList.add("state-" + stateNum);
-        stateNum++;
-    });
-}
-
-
-
 
 let scrollY = 0;
 let scrollFlag = document.querySelector(".state-0");
+let endScroll = document.querySelector(".end-animate");
 let transitionNum = 4;
 let documentBody = document.querySelector("body");
 
@@ -325,11 +396,13 @@ const animateProjects = event => {
 
     if (checkBottom()){
 
+      
         documentBody.classList.add("stop-scrolling");
-
+        console.log(inTransition);
         if (inTransition) {
 
-            transitionStates(transitionNum, scroll, stateOpacity);
+
+            transitionStates(transitionNum, scroll);
         }
 
         else {
@@ -339,7 +412,7 @@ const animateProjects = event => {
             if (window.getComputedStyle(scrollFlag).opacity === '0') {
 
                 documentBody.classList.remove("stop-scrolling");
-                console.log("works");
+                
             }
         }
     }

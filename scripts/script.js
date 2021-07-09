@@ -398,7 +398,7 @@ const animateProjects = event => {
 
       
         documentBody.classList.add("stop-scrolling");
-        console.log(inTransition);
+    
         if (inTransition) {
 
 

@@ -48,7 +48,7 @@ body.stop-scrolling {
 
 .header-container nav {
 
-    grid-column: 46 / 47;
+    grid-column: 46 / 48;
     grid-row: 9 / 18;
     text-align: center;
     display: none;

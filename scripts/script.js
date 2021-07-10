@@ -236,6 +236,7 @@ const boundOpacity = opacityValue => {
 
 
 let inTransition = false;
+let totalStates = 4;
 
 const removeTags = page => {
 
@@ -253,7 +254,7 @@ const removeTags = page => {
             el.classList.remove("init-trans");
     
         }
-        else if (stateNum === 4) {
+        else if (stateNum === totalStates) {
 
             el.classList.remove("end-trans");
         
@@ -278,7 +279,7 @@ const addTags = page => {
             el.classList.add("init-trans");
         }
 
-        else if (stateNum === 4) {
+        else if (stateNum === totalStates) {
 
             el.classList.add("end-trans");
         }
@@ -288,6 +289,7 @@ const addTags = page => {
 }
 
 let initPage = 1;
+let totalPages = 3;
 
 const transitionStates = (numStates, amount) => {
 
@@ -315,7 +317,7 @@ const transitionStates = (numStates, amount) => {
 
     transState = 1;
 
-    if (window.getComputedStyle(collectedStates[numStates - 1]).opacity === "0" && amount < 0 && initPage < 3) {
+    if (window.getComputedStyle(collectedStates[numStates - 1]).opacity === "0" && amount < 0 && initPage < totalPages) {
 
         removeTags(initPage);
         addTags(++initPage);
@@ -324,7 +326,7 @@ const transitionStates = (numStates, amount) => {
     }
 
     if (window.getComputedStyle(collectedStates[0]).opacity === "1" && amount > 0) {
-        state = 4;
+        state = totalStates;
         inTransition = false;
     }
 
@@ -352,7 +354,7 @@ const projectScrollAnimation = amount => {
         state--;
     }
 
-    else if (window.getComputedStyle(stateElement).opacity === "1" && state !== 4) {
+    else if (window.getComputedStyle(stateElement).opacity === "1" && state !== totalStates) {
         
         stateOpacity = 0;
         state ++;
@@ -371,7 +373,7 @@ const projectScrollAnimation = amount => {
         }
     }
 
-    if (window.getComputedStyle(endTrans).opacity === "1" && amount > 0) {
+    if (window.getComputedStyle(endTrans).opacity === "1" && amount > 0 && initPage !== totalPages) {
 
         inTransition = true;
     }
@@ -381,7 +383,6 @@ const projectScrollAnimation = amount => {
 let scrollY = 0;
 let scrollFlag = document.querySelector(".state-0");
 let endScroll = document.querySelector(".end-animate");
-let transitionNum = 4;
 let documentBody = document.querySelector("body");
 
 const animateProjects = event => {
@@ -396,7 +397,7 @@ const animateProjects = event => {
         if (inTransition) {
 
 
-            transitionStates(transitionNum, scroll);
+            transitionStates(totalStates, scroll);
         }
 
         else {

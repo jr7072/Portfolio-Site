@@ -191,10 +191,6 @@ window.addEventListener('scroll', () => {
 
 /* animation on scroll script */
 
-//FIXME: needs to be able to transition between projects on show case.
-
-
-
 const hideProjectTemplate = () => {
 
     let projectBoxes = document.querySelectorAll(".collect");
@@ -240,8 +236,6 @@ const boundOpacity = opacityValue => {
 
 
 let inTransition = false;
-
-//FIXME: need to create a stable function
 
 const removeTags = page => {
 

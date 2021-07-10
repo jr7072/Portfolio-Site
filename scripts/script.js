@@ -298,6 +298,11 @@ let initPage = 1;
 const transitionStates = (numStates, amount) => {
 
     amount *= -1;
+
+    if (initPage === 3) {
+
+        amount *= -1;
+    }
     
     let increment = amount * 0.003;
    

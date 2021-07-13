@@ -419,7 +419,6 @@ const animateProjects = event => {
     let scroll = event.deltaY;
 
     if (checkBottom()){
-
       
         documentBody.classList.add("stop-scrolling");
     

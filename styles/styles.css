@@ -10,6 +10,7 @@ body {
     font-family: "Roboto", sans-serif;
     background-color: #09133d;
     color: #ffffff;
+    min-width: 450px;
 }
 
 body.stop-scrolling {
@@ -39,6 +40,14 @@ body.stop-scrolling {
     grid-column: 3 / 14;
     grid-row: 4 / 8;
     font-family: "Rock Salt", cursive;
+}
+
+@media only screen and (max-width: 1190px) {
+
+    .title {
+
+        grid-column: 3 / 28;
+    }
 }
 
 .arrow {
@@ -82,6 +91,39 @@ body.stop-scrolling {
    
 }
 
+@media only screen and (max-width: 600px) {
+
+    .header-container {
+
+        display: flex;
+        height: 69px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+
+    }
+
+    .header-container .title, .header-container .arrow{
+
+        display: none;
+
+    }
+
+    .header-container #navigation {
+
+        margin: 10px auto;
+        display: block !important;
+        opacity: 1 !important;
+    }
+
+    .header-container li {
+
+        display: inline-block;
+        margin: 10px 20px; 
+    }
+
+
+}
+
 .intro {
 
     width: 100%;
@@ -103,6 +145,19 @@ body.stop-scrolling {
     display: none;
 }
 
+@media only screen and (max-width: 600px){
+
+    .intro {
+
+        text-align: center;
+    }
+    .intro span {
+
+        width: 80%;
+    }
+}
+
+
 .contact h2 {
 
     width: 100%;
@@ -123,6 +178,25 @@ body.stop-scrolling {
     justify-content: center;
     align-content: flex-start;
 
+}
+
+@media only screen and (max-width: 1300px) {
+    .contact .email, .contact .linked-in, .contact .git-hub {
+
+        width: 100%;
+        height: 85%;
+    }
+
+    .contact .email h3 {
+
+        text-align: center;
+    }
+
+
+    .contact .linked-in a, .contact .git-hub a {
+
+        margin: 0 auto;
+    }
 }
 
 .contact .email h2,.contact .linked-in h2, .contact .git-hub h2 {
@@ -147,16 +221,17 @@ body.stop-scrolling {
     justify-self: center;
 }
 
-.contact .linked-in img{
+.contact .linked-in a, .contact .git-hub a{
 
-    width: 100%;
-    height: 50%;
+    width: 250px;
+    height: 250px;
 }
 
-.contact .git-hub img{
+.contact .git-hub img, .contact .linked-in img{
 
     width: 100%;
-    height: 60%;
+    height: 100%;
+
 }
 
 .contact .git-hub img:hover, .contact .linked-in img:hover{
@@ -188,6 +263,25 @@ body.stop-scrolling {
     transition: opacity 500ms;
 }
 
+@media only screen and (max-width: 1400px) {
+
+    .scroll-container {
+
+        height: 1400px;
+        flex-wrap: wrap;
+    }
+
+    .bio, .languages {
+
+        width: 80%;
+        height: 40%;
+        margin: 0 0;
+        position: relative;
+        right: 30px
+    }
+
+
+}
 .bio h2, .languages h2{
 
     padding-top: 100px;
@@ -199,6 +293,12 @@ body.stop-scrolling {
     margin: 50px 30px;
     line-height: 1.6;
     font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 1600px) {
+    .bio p {
+        margin: 5px 30px;
+    }
 }
 
 .languages {
@@ -324,4 +424,17 @@ body.stop-scrolling {
     width: 100%;
     height: 100%;
     
+}
+
+@media only screen and (max-width: 600px) {
+
+    .project-box .state-0 {
+
+        grid-row : 10/ 14;
+        grid-column: 3/ 48;
+    }
+    .project-box .state-1, .project-box .state-4 {
+
+        grid-column: 3 / 48;
+    }
 }

@@ -395,11 +395,24 @@ const projectScrollAnimation = amount => {
     }
 
 }
+let documentBody = document.querySelector("body");
+
+const resetProjects = () => {
+
+    removeTags(initPage);
+    addTags(1);
+    initPage = 1;
+    hideProjectTemplate();
+    stateOpacity = 0;
+    state = 0;
+    inTransition = false;
+    documentBody.classList.remove("stop-scrolling");
+
+}
 
 let scrollY = 0;
 let scrollFlag = document.querySelector(".state-0");
 let endScroll = document.querySelector(".end-animate");
-let documentBody = document.querySelector("body");
 
 const animateProjects = event => {
 
@@ -429,4 +442,7 @@ const animateProjects = event => {
     }
 }
 
+let innerLink = document.getElementById("inner-link");
+
+innerLink.addEventListener("click", resetProjects);
 window.addEventListener('wheel', animateProjects);

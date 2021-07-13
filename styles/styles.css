@@ -7,15 +7,26 @@
 body {
 
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #191970;
+    font-family: "Roboto", sans-serif;
+    background-color: #09133d;
     color: #ffffff;
+}
+
+body.stop-scrolling {
+
+    height: 100%;
+    overflow: hidden;
+}
+
+.tab {
+
+    margin-left: 40px;
 }
 
 .header-container {
 
     width: 100%;
-    height: 800px;
+    height: 400px;
     display: grid;
     grid-template: repeat(50, 1fr) / repeat(50, 1fr);
     background-color: rgba(255, 255, 255, 0);
@@ -27,6 +38,7 @@ body {
 
     grid-column: 3 / 14;
     grid-row: 4 / 8;
+    font-family: "Rock Salt", cursive;
 }
 
 .arrow {
@@ -37,8 +49,8 @@ body {
 
 .header-container nav {
 
-    grid-column: 46 / 47;
-    grid-row: 9 / 18;
+    grid-column: 46 / 48;
+    grid-row: 10 / 19;
     text-align: center;
     display: none;
 }
@@ -52,6 +64,22 @@ body {
 .header-container li {
 
     margin: 20px 0;
+    font-size: 1rem;
+    color: #ffffff;
+
+}
+
+.header-container a {
+
+    text-decoration: none;
+}
+
+.header-container li:hover {
+
+    text-decoration: initial;
+    color: #0687ff;
+    border-bottom: 2px solid #0687ff;
+   
 }
 
 .intro {
@@ -59,6 +87,7 @@ body {
     width: 100%;
     height: 1000px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
@@ -72,4 +101,227 @@ body {
 .intro span {
 
     display: none;
+}
+
+.contact h2 {
+
+    width: 100%;
+    margin-bottom: 300px;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.contact .email, .contact .linked-in, .contact .git-hub {
+
+    margin: 0 30px;
+    width: 25%;
+    height: 50%;
+    position: relative;
+    bottom: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+
+}
+
+.contact .email h2,.contact .linked-in h2, .contact .git-hub h2 {
+
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+
+.contact .email h3 {
+
+    font-size: 1.5rem;
+    width: 80%;
+
+    
+}
+
+.contact .linked-in a, .contact .git-hub a{
+
+    width: 35%;
+    height: 50%;
+    justify-self: center;
+}
+
+.contact .linked-in img{
+
+    width: 100%;
+    height: 50%;
+}
+
+.contact .git-hub img{
+
+    width: 100%;
+    height: 60%;
+}
+
+.contact .git-hub img:hover, .contact .linked-in img:hover{
+
+    position: relative;
+    bottom: 5px;
+}
+
+.scroll-container {
+
+    width: 100%;
+    height: 600px;
+    background-color: #000000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.scroll-card {
+
+    width: 40%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    border-radius: 10%;
+    margin-left: 30px;
+    transition: opacity 500ms;
+}
+
+.bio h2, .languages h2{
+
+    padding-top: 100px;
+    font-size: 2rem;
+}
+
+.bio p{
+
+    margin: 50px 30px;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+.languages {
+
+    background-color: #09133d;
+}
+
+.languages h2 {
+    width: 100%;
+    text-align: center;
+}
+
+
+.languages ul {
+
+    list-style-type: circle;
+    padding-right: 140px;
+    margin-top: 30px;   
+}
+
+.languages li {
+
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.scroll-card.scrolled.slide-right {
+    opacity: 1 !important;
+    animation: slide-in-right 1s ease-in-out both;
+}
+
+
+.slide-left {
+
+    animation: slide-in-left 1s ease-in-out both;
+}
+
+@keyframes slide-in-right {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(100px);
+      opacity: 1;
+    }
+}
+
+@keyframes slide-in-left {
+
+    0% {
+
+        transform: translateX(100px);
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+
+.project-box {
+
+    width: 100%;
+    height: 1000px;
+    background-color: #000000;
+    text-align: center;
+    display: grid;
+    grid-template: repeat(50, 1fr) / repeat(50, 1fr);
+
+}
+
+.project-box h2, .project-box p {
+
+    width: 100%;
+    font-size: 3rem;
+}
+
+.project-box .state-0 {
+    grid-row: 5 / 7;
+    grid-column: 23 / 27;
+  
+}
+
+.project-box .state-1{
+
+    background-color: rbga(0,0,0,0);
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    grid-row: 15 / 41;
+    grid-column: 3 / 24;
+}
+
+
+.state-1 h2{
+
+    width: 100%;
+    padding-top: 100px;
+    font-size: 3rem;
+}
+
+.state-1 p {
+
+    width: 80%;
+    margin: 50px auto;
+    font-size: 2rem;
+}
+
+.project-box .state-4{
+
+    grid-column: 26 / 48;
+    grid-row: 15 / 41;
+
+}
+
+.state-4 img {
+
+    width: 100%;
+    height: 100%;
+    
 }

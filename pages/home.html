@@ -4,6 +4,9 @@
     <head>
         <title>Juan Rosales</title>
         <link href="../styles/styles.css" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet">
     </head>
     <body>
         <header class="header-container">
@@ -16,9 +19,10 @@
             </div>
             <nav id="navigation">
                 <ul>
-                    <li>Home</li>
-                    <li>Projects</li>
-                    <li>Contact</li>
+                    <a href=""><li>Home</li></a>
+                    <a href="#about-me"><li>About Me</li></a>
+                    <a href="#projects"><li>Projects</li></a>
+                    <a href="./contact.html"><li>Contact</li></a>
                 </ul>
             </nav>
         </header>
@@ -35,6 +39,66 @@
                     </h2>
                 </div>
                 
+            </section>
+            <section>
+                <div class="scroll-container" id="about-me">
+                    <div class="scroll-card bio">
+                        <h2>Who am I?</h2>
+                        <p>
+                            <span class="tab">My</span> name is Juan Rosales and I am a ambitous programmer who is not afraid to take on any challenge.
+                            Currently, I am a student working on my bachelors degree in computer science at The University of Houston.
+                            I began programming in 2019 starting with python; I then transitioned into cpp a year later, which is currently my preffered language
+                            to code in. I now am in the process of learning web development and am two months in! Outside of coding I like to go out and enjoy the sun every
+                            once in a while aswell as read up on some intresting concepts in math and science.
+                        </p>
+                    </div>
+                    <div class="scroll-card languages">
+                        <h2>Known Languages</h2>
+                        <ul>
+                            <li>Python</li>
+                            <li>C++</li>
+                            <li>Java Script</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+
+                <div class="project-box" id="projects">
+                    <h2 class="state-0 collect">Projects</h2>
+                    
+                    <div class=" state-1 collect page-1">
+                        <h2 class="state-2 collect page-1">JMR Motorsports</h2>
+                        <p class="state-3 collect page-1">
+                            Created a static website page using standard html and css for an upcoming company that specializes on automotive
+                            maintnance, wiring, and cnc machines.
+                        </p>
+                    </div>
+                    <div class=" state-4 collect page-1 end-trans">
+                        <img src="../figures/2021-07-06 17_51_46-.png"/>
+                    </div>
+                    <div class="collect page-2">
+                        <h2 class="collect page-2">Fluid Simulation (CPP)</h2>
+                        <p class="collect page-2">
+                            Read a paper online on how to use the novier stokes equations to create a simple 2d fluid simulation using the SDL library to render
+                            graphics. This project gave me the ability to read code and refactor it, aswell as render images from pure data.
+                        </p>
+                    </div>
+                    <div class="collect page-2">
+                        <img src="../figures/2021-07-10 11_40_05-Release.png" alt="fluid simulation"/>
+                    </div>
+                    <div class="collect page-3">
+                        <h2 class="collect page-3">Space Invaders (Python)</h2>
+                        <p class="collect page-3">
+                            recreated a simple version of the classic arcade game galaga using the pygame library in python and object oriented programming.
+                        </p>
+                    </div>
+                    <div class="collect page-3">
+                        <img src="../figures/2021-07-08 19_31_50-Alien Invasion.png" alt="Space Invaders"/>
+                    </div>
+                </div>
             </section>
         </main>
 

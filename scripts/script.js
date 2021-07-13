@@ -442,7 +442,11 @@ const animateProjects = event => {
     }
 }
 
-let innerLink = document.getElementById("inner-link");
+let innerLinks = document.querySelectorAll(".inner-link");
 
-innerLink.addEventListener("click", resetProjects);
+innerLinks.forEach(el => {
+    
+    el.addEventListener("click", resetProjects);
+});
+
 window.addEventListener('wheel', animateProjects);

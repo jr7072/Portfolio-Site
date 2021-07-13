@@ -4,43 +4,48 @@
 let op = null;
 let banner = document.getElementById("navigation");
 let button = document.getElementById("nav-arrow");
-let arrowActivated = false;
+let arrowActivated = -1;
+let degrees = 0;
+let buttonTimer = null;
+let timer = null;
 
 function rotateUp() {
 
-    let degrees = 0;
 
     buttonTimer = setInterval(function () {
 
-        if (degrees === 180){
+        if (degrees >= 180){
 
             clearInterval(buttonTimer);
+            degrees = 180;
+            buttonTimer = null;
         }
         
-
         button.style.transform = "rotate(" + degrees + "deg)";
         degrees += 10;
 
     }, 10)
-    
+
 }
 
 function rotateDown() {
 
-    let degrees = 180;
 
     buttonTimer = setInterval(function () {
 
-        if (degrees === 360){
+        if (degrees >= 360){
 
             clearInterval(buttonTimer);
             degrees = 0;
+            buttonTimer = null;
+ 
         }
-        
+
         button.style.transform = "rotate(" + degrees + "deg)";
         degrees += 10;
 
     }, 10)
+
     
 }
 
@@ -48,54 +53,66 @@ function fadeIn () {
 
     op = 0.1;
     banner.style.display = "flex";
-    arrowActivated = true;
 
     timer = setInterval(function () {
         
         if (op >= 1) {
 
             clearInterval(timer);
-
+            timer = null;
         }
 
+     
         banner.style.opacity = op;
         banner.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op += op * 0.1;
     }, 10);
 
+
+    
 }
 
 function fadeOut() {
 
     op = 1;
-    arrowActivated = false;
 
     timer = setInterval(function () {
         
         if (op <= 0.1) {
             banner.style.display = "none";
             clearInterval(timer);
+            timer = null;
         }
 
+        
         banner.style.opacity = op;
         banner.style.filter = "alpha(opacity" + op * 100 + ")";
         op -= op * 0.1;
-    
+        
     }, 10)
+
 
 }
 
+
 function bannerAnimation () {
+    
+    if (arrowActivated === 1 && buttonTimer === null && timer === null) {
 
-    if (arrowActivated) {
-        fadeOut();
         rotateDown();
+        fadeOut();
+        arrowActivated = -1;
     }
 
-    else {
-        fadeIn();
+    else if (arrowActivated === -1 && buttonTimer === null && timer === null){
+
         rotateUp();
+        fadeIn();
+        arrowActivated = 1;
     }
+
+  
+
 }
 
 button.onclick = bannerAnimation;
@@ -118,11 +135,11 @@ const animateIntro = () => {
     let i = 0;
     let timeDelay = 400;
 
-    timer = setInterval(function () {
+    introTimer = setInterval(function () {
         
         
         if (i === 3){
-            clearInterval(timer);
+            clearInterval(introTimer);
         }
 
         words[i].style.display = "inline-block";
@@ -136,7 +153,6 @@ const animateIntro = () => {
 animateIntro();
 
 /* scroll animations */
-
 //fade scroll elements out
 
 let cards = document.querySelectorAll(".scroll-card");

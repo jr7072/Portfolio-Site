@@ -7,8 +7,8 @@
 body {
 
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #151538;
+    font-family: "Roboto", sans-serif;
+    background-color: #09133d;
     color: #ffffff;
 }
 
@@ -38,6 +38,7 @@ body.stop-scrolling {
 
     grid-column: 3 / 14;
     grid-row: 4 / 8;
+    font-family: "Rock Salt", cursive;
 }
 
 .arrow {
@@ -202,7 +203,7 @@ body.stop-scrolling {
 
 .languages {
 
-    background-color: #1c1441;
+    background-color: #09133d;
 }
 
 .languages h2 {

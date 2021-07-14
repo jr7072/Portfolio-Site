@@ -228,7 +228,7 @@ const checkBottom = () => {
     
     let position = projectContainer.getBoundingClientRect().bottom;
 
-    return position <= (window.innerHeight);
+    return position <= (window.innerHeight || document.documentElement.clientHeight) + 1;
 }
 
 let stateOpacity = 0;
@@ -348,8 +348,6 @@ const transitionStates = (numStates, amount) => {
 
 }
 
-
-
 const projectScrollAnimation = amount => {
 
 
@@ -397,6 +395,10 @@ const projectScrollAnimation = amount => {
 }
 let documentBody = document.querySelector("body");
 
+let touchStartY = 0;
+let touchEndY = 0;
+let swipeVelocity = 0;
+
 const resetProjects = () => {
 
     removeTags(initPage);
@@ -406,6 +408,9 @@ const resetProjects = () => {
     stateOpacity = 0;
     state = 0;
     inTransition = false;
+    touchStartY = 0;
+    touchEndY = 0;
+    swipeVelocity = 0;
     documentBody.classList.remove("stop-scrolling");
 
 }
@@ -440,6 +445,50 @@ const animateProjects = event => {
             }
         }
     }
+}
+
+window.addEventListener("touchstart", event => {
+    
+    touchStartY = event.changedTouches[0].screenY;
+
+}, false)
+
+window.addEventListener("touchend", event => {
+
+    touchEndY = event.changedTouches[0].screenY;
+    swipeVelocity = touchStartY - touchEndY;
+    mobileAnimation();
+
+}, false)
+
+const mobileAnimation = () => {
+
+    let scroll = swipeVelocity; //change in touch value
+  
+    if (checkBottom()){
+
+      
+        documentBody.classList.add("stop-scrolling");
+    
+        if (inTransition) {
+
+
+            transitionStates(totalStates, scroll);
+        }
+
+        else {
+
+            projectScrollAnimation(scroll);
+
+            swipeVelocity = 0;
+            
+            if (window.getComputedStyle(scrollFlag).opacity === '0') {
+
+                documentBody.classList.remove("stop-scrolling");
+                
+            }
+        }
+}
 }
 
 let innerLinks = document.querySelectorAll(".inner-link");

@@ -228,7 +228,33 @@ const checkBottom = () => {
     
     let position = projectContainer.getBoundingClientRect().bottom;
 
-    return position <= (window.innerHeight || document.documentElement.clientHeight) + 1;
+    return position <= (window.innerHeight || document.documentElement.clientHeight) + 100;
+}
+
+let documentBody = document.querySelector("body");
+let scrollPosition = 0;
+let enabled = false;
+
+
+const enable = () => {
+    enabled = true;
+    scrollPosition = window.pageYOffset;
+    console.log(scrollPosition);
+    documentBody.style.overflow = "hidden";
+    documentBody.style.position = "fixed";
+    documentBody.style.top = `-${scrollPosition}px`;
+    documentBody.style.width = "100%";
+}
+
+const disable = () => {
+
+    documentBody.style.removeProperty('overflow');
+    documentBody.style.removeProperty('position');
+    documentBody.style.removeProperty('top');
+    documentBody.style.removeProperty('width');
+    window.scrollTo(0, scrollPosition);
+    enabled = false;
+
 }
 
 let stateOpacity = 0;
@@ -393,7 +419,6 @@ const projectScrollAnimation = amount => {
     }
 
 }
-let documentBody = document.querySelector("body");
 
 let touchStartY = 0;
 let touchEndY = 0;
@@ -425,9 +450,9 @@ const animateProjects = event => {
 
     if (checkBottom()){
 
-      
-        documentBody.classList.add("stop-scrolling");
-    
+        if (!enabled) {
+            enable();
+        }
         if (inTransition) {
 
 
@@ -440,26 +465,13 @@ const animateProjects = event => {
             
             if (window.getComputedStyle(scrollFlag).opacity === '0') {
 
-                documentBody.classList.remove("stop-scrolling");
-                
+                disable();
+                console.log("works");
             }
         }
     }
 }
 
-window.addEventListener("touchstart", event => {
-    
-    touchStartY = event.changedTouches[0].screenY;
-
-}, false)
-
-window.addEventListener("touchend", event => {
-
-    touchEndY = event.changedTouches[0].screenY;
-    swipeVelocity = touchStartY - touchEndY;
-    mobileAnimation();
-
-}, false)
 
 const mobileAnimation = () => {
 
@@ -467,9 +479,9 @@ const mobileAnimation = () => {
   
     if (checkBottom()){
 
-      
-        documentBody.classList.add("stop-scrolling");
-    
+        if (!enabled) {
+            enable();
+        }
         if (inTransition) {
 
 
@@ -479,16 +491,14 @@ const mobileAnimation = () => {
         else {
 
             projectScrollAnimation(scroll);
-
-            swipeVelocity = 0;
             
             if (window.getComputedStyle(scrollFlag).opacity === '0') {
 
-                documentBody.classList.remove("stop-scrolling");
-                
+                disable();
+                console.log("works");
             }
         }
-}
+    }
 }
 
 let innerLinks = document.querySelectorAll(".inner-link");
@@ -499,3 +509,18 @@ innerLinks.forEach(el => {
 });
 
 window.addEventListener('wheel', animateProjects);
+
+window.addEventListener("touchstart", event => {
+    
+    touchStartY = event.changedTouches[0].screenY;
+    
+
+}, false);
+
+window.addEventListener("touchend", event => {
+
+    touchEndY = event.changedTouches[0].screenY;
+    swipeVelocity = touchStartY - touchEndY;
+    mobileAnimation();
+
+}, false);

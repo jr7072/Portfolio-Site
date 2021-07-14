@@ -13,12 +13,6 @@ body {
     min-width: 450px;
 }
 
-body.stop-scrolling {
-
-    height: 100%;
-    overflow: hidden;
-}
-
 .tab {
 
     margin-left: 40px;
